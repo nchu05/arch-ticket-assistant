@@ -84,7 +84,7 @@ def get_ticket_details(start_date=None, end_date=None, date_string=None):
         df = df.drop('_id', axis=1)
         df = df.drop('lastest_Message', axis=1)
         df.sort_values(by='ticket_creation_date', ascending=False, inplace=True)
-        df = df.head(50)
+        #df = df.head(50)
     except:
       pass
     print(df)
