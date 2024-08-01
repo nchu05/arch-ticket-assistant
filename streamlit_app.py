@@ -82,9 +82,9 @@ def get_ticket_details(start_date=None, end_date=None, date_string=None):
     try:
         # columns: plant code, full name of plant, possible causes
         df = df.drop('_id', axis=1)
-        # df = df.drop('lastest_Message', axis=1)
+        df = df.drop('lastest_Message', axis=1)
         df.sort_values(by='ticket_creation_date', ascending=False, inplace=True)
-        df = df.head(100)
+        df = df.head(50)
     except:
       pass
     print(df)
@@ -152,7 +152,7 @@ class AssistantManager:
                 raise ValueError(f"Unknown function: {func_name}")
         
         print(tool_outputs)
-        
+
         self.client.beta.threads.runs.submit_tool_outputs(
             thread_id=self.thread.id, run_id=self.run.id, tool_outputs=tool_outputs
         )
